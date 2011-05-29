@@ -11,6 +11,10 @@ class Mzp {
     public function categorize($tweet) {
         $tweet = explode("\t", $tweet);
         $types = array();
+        if(count($tweet) == 3){
+            array_shift($tweet);
+         }
+        
         if (preg_match('/#/', $tweet[1])) {
             $types[] = '!HashTag';
         }

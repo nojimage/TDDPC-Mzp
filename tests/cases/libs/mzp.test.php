@@ -19,6 +19,14 @@ class MzpTestCase extends CakeTestCase {
         $this->assertIdentical("Norlal\tあいうえお", $this->Mzp->categorize("Alice\tあいうえお"));
     }
 
+    function test日付付きのTweetをパースする() {
+        $this->assertIdentical("Norlal\tあいうえお", $this->Mzp->categorize("2011/04/01 14:22:57\tAlice\tあいうえお"));
+    }
+
+    function test日付付きのTweetをパースする2() {
+        $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("2011/04/01 14:22:57\Bob\tかきくけこ"));
+    }
+    
     function testTweetをパースする2() {
         $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("Bob\tかきくけこ"));
     }
@@ -44,7 +52,7 @@ class MzpTestCase extends CakeTestCase {
         $this->assertTrue(is_array($results));
         $this->assertPattern('![0-9]{4}/(?:0[0-9]|1[0-2])/(?:[0-2][0-9]|3[0-1]) (?:[0-1][0-9]|2[0-3]):(?:[0-5][0-9]):(?:[0-5][0-9])\t[A-z_]+\t.*!', $results[0]);
     }
-    
+
     function testHttpSocketが定義されている() {
         $this->assertIdentical('HttpSocket', get_class($this->Mzp->Http));
     }
@@ -52,7 +60,7 @@ class MzpTestCase extends CakeTestCase {
     function testGetDataHttpSocketを呼び出している() {
         $this->Mzp->Http = new MockMzpHttpSocket();
         $this->Mzp->Http->expectOnce('get', array('http://tddbc.heroku.com/mzp/public_timeline'));
-  
+
         $results = $this->Mzp->getData();
         $this->assertTrue(is_array($results));
     }

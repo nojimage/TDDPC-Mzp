@@ -4,12 +4,17 @@ class Mzp {
 
     public function categorize($tweet) {
         $tweet = explode("\t", $tweet);
+        $types = array();
         if (preg_match('/#/', $tweet[1])) {
-            $tweet[0] = '!HashTag';
-        } else if (preg_match('/^@/', $tweet[1])) {
-            $tweet[0] = 'Reply';
+            $types[] = '!HashTag';
+        }
+        if (preg_match('/^@/', $tweet[1])) {
+            $types[] = 'Reply';
         } else if (preg_match('/@/', $tweet[1])) {
-            $tweet[0] = 'Mention';
+            $types[] = 'Mention';
+        }
+        if (!empty($types)) {
+            $tweet[0] = join(',', $types);
         } else {
             $tweet[0] = 'Norlal';
         }

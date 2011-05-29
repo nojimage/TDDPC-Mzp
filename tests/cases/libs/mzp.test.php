@@ -25,7 +25,7 @@ class MzpTestCase extends CakeTestCase {
     function testTweetをパースするmentionを渡すとそのまま返す(){
         $this->assertIdentical("AAA\tあああ@Bob", $this->Mzp->categorize("AAA\tあああ@Bob"));
     }
-    function testTweetをパースするhashtagを渡すとそのまま返す(){
-        $this->assertIdentical("AAA\tあああ #tddpc", $this->Mzp->categorize("AAA\tあああ #tddpc"));
+    function testTweetをパースするhashtagを渡すとHashTagをつけて返す(){
+        $this->assertIdentical("!HashTag\tあああ #tddpc", $this->Mzp->categorize("AAA\tあああ #tddpc"));
     }
 }

@@ -47,7 +47,7 @@ class MzpTestCase extends CakeTestCase {
     }
     
     function testHttpSocketが定義されている() {
-        $this->assertIsA('HttpSocket', $this->Mzp->Http);
+        $this->assertIdentical('HttpSocket', get_class($this->Mzp->Http));
     }
 /*
     function testGetDataHttpSocketを呼び出している() {

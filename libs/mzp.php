@@ -1,7 +1,13 @@
 <?php
-
+APP::import('core','HttpSocket');
+/**
+ * @property HttpSocket $Http
+ */
 class Mzp {
 
+    function __construct() {
+        $this->Http = new HttpSocket();
+    }
     public function categorize($tweet) {
         $tweet = explode("\t", $tweet);
         $types = array();

@@ -42,8 +42,7 @@ class MzpTestCase extends CakeTestCase {
     function testGetDataでデータをとってくる() {
         $results = $this->Mzp->getData();
         $this->assertTrue(is_array($results));
-        #$this->assertPattern('![0-9]{4}/(?:0[0-9]|1[0-2])/(?:[0-2][0-9]|3[0-1]) (?:[0-1][0-9]|2[0-3]):(?:[0-5][0-9]):(?:[0-5][0-9]),[A-z_],.*!', $results[0]);
-        $this->assertPattern('!.+\t.+\t.*!', $results[0]);
+        $this->assertPattern('![0-9]{4}/(?:0[0-9]|1[0-2])/(?:[0-2][0-9]|3[0-1]) (?:[0-1][0-9]|2[0-3]):(?:[0-5][0-9]):(?:[0-5][0-9]),[A-z_],.*!', $results[0]);
     }
     
     function testHttpSocketが定義されている() {

@@ -24,9 +24,9 @@ class MzpTestCase extends CakeTestCase {
     }
 
     function test日付付きのTweetをパースする2() {
-        $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("2011/04/01 14:22:57\Bob\tかきくけこ"));
+        $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("2011/04/01 14:22:57\tBob\tかきくけこ"));
     }
-    
+
     function testTweetをパースする2() {
         $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("Bob\tかきくけこ"));
     }
@@ -35,16 +35,32 @@ class MzpTestCase extends CakeTestCase {
         $this->assertIdentical("Reply\t@Bob", $this->Mzp->categorize("AAA\t@Bob"));
     }
 
+    function test日付付きのTweetをパースするrelpyを渡すとReplyをつけて返す() {
+        $this->assertIdentical("Reply\t@Bob", $this->Mzp->categorize("2011/04/01 14:22:57\tAAA\t@Bob"));
+    }
+
     function testTweetをパースするmentionを渡すとMentionをつけて返す() {
         $this->assertIdentical("Mention\tあああ@Bob", $this->Mzp->categorize("AAA\tあああ@Bob"));
+    }
+
+    function test日付付きのTweetをパースするmentionを渡すとMentionをつけて返す() {
+        $this->assertIdentical("Mention\tあああ@Bob", $this->Mzp->categorize("2011/04/01 14:22:57\tAAA\tあああ@Bob"));
     }
 
     function testTweetをパースするhashtagを渡すとHashTagをつけて返す() {
         $this->assertIdentical("!HashTag\tあああ #tddpc", $this->Mzp->categorize("AAA\tあああ #tddpc"));
     }
 
+    function test日付付きのTweetをパースするhashtagを渡すとHashTagをつけて返す() {
+        $this->assertIdentical("!HashTag\tあああ #tddpc", $this->Mzp->categorize("2011/04/01 14:22:57\tAAA\tあああ #tddpc"));
+    }
+
     function testTweetをパースするhashtagとreplyが含まれていた場合はカンマ区切りで返す() {
         $this->assertIdentical("!HashTag,Reply\t@Bob こんにちは #tddpc", $this->Mzp->categorize("AAA\t@Bob こんにちは #tddpc"));
+    }
+
+    function test日付付きのTweetをパースするhashtagとreplyが含まれていた場合はカンマ区切りで返す() {
+        $this->assertIdentical("!HashTag,Reply\t@Bob こんにちは #tddpc", $this->Mzp->categorize("2011/04/01 14:22:57\tAAA\t@Bob こんにちは #tddpc"));
     }
 
     function testGetDataでデータをとってくる() {

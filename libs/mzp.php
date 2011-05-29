@@ -3,7 +3,9 @@
 class Mzp {
 
     public function categorize($tweet) {
-        return "Norlal\tあいうえお";
+        $tweet = explode("\t", $tweet);
+        $tweet[0] = 'Norlal';
+        return join("\t", $tweet);
     }
 
 }

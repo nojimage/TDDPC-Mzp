@@ -28,4 +28,7 @@ class MzpTestCase extends CakeTestCase {
     function testTweetをパースするhashtagを渡すとHashTagをつけて返す(){
         $this->assertIdentical("!HashTag\tあああ #tddpc", $this->Mzp->categorize("AAA\tあああ #tddpc"));
     }
+    function testTweetをパースするhashtagとreplyが含まれていた場合はカンマ区切りで返す(){
+        $this->assertIdentical("!HashTag,Reply\t@Bob こんにちは #tddpc", $this->Mzp->categorize("AAA\t@Bob こんにちは #tddpc"));
+    }
 }

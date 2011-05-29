@@ -21,4 +21,10 @@ class Mzp {
         return join("\t", $tweet);
     }
 
+    public function getData(){
+        $return = array();
+        $tweet = "ああ\tああ\tあああ";
+        array_push($return, $tweet);
+        return $return;
+    }
 }

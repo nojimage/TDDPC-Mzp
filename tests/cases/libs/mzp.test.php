@@ -19,4 +19,7 @@ class MzpTestCase extends CakeTestCase {
     function testTweetをパースする2(){
         $this->assertIdentical("Norlal\tかきくけこ", $this->Mzp->categorize("Bob\tかきくけこ"));
     }
+    function testTweetをパースする3(){
+        $this->assertIdentical("AAA\t@Bob", $this->Mzp->categorize("AAA\t@Bob"));
+    }
 }

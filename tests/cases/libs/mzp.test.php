@@ -45,10 +45,14 @@ class MzpTestCase extends CakeTestCase {
         #$this->assertPattern('![0-9]{4}/(?:0[0-9]|1[0-2])/(?:[0-2][0-9]|3[0-1]) (?:[0-1][0-9]|2[0-3]):(?:[0-5][0-9]):(?:[0-5][0-9]),[A-z_],.*!', $results[0]);
         $this->assertPattern('!.+\t.+\t.*!', $results[0]);
     }
-
+    
+    function testHttpSocketが定義されている() {
+        $this->assertIsA('HttpSocket', $this->Mzp->Http);
+    }
+/*
     function testGetDataHttpSocketを呼び出している() {
         $this->Mzp->Http = new MockMzpHttpSocket();
         $this->Mzp->Http->expectOnce('get', array('http://tddbc.heroku.com/mzp/public_timeline'));
     }
-
+*/
 }

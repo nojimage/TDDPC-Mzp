@@ -28,10 +28,8 @@ class Mzp {
     }
 
     public function getData(){
-        $this->Http->get('http://tddbc.heroku.com/mzp/public_timeline');
-        $return = array();
-        $tweet = "ああ\tああ\tあああ";
-        array_push($return, $tweet);
-        return $return;
+        $result = $this->Http->get('http://tddbc.heroku.com/mzp/public_timeline');
+        $result = explode("\n", $result);
+        return $result;
     }
 }

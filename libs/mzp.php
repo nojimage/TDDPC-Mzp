@@ -8,7 +8,9 @@ class Mzp {
             $tweet[0] = '!HashTag';
         } else if (preg_match('/^@/', $tweet[1])) {
             $tweet[0] = 'Reply';
-        } else if (!preg_match('/@/', $tweet[1])) {
+        } else if (preg_match('/@/', $tweet[1])) {
+            $tweet[0] = 'Mention';
+        } else {
             $tweet[0] = 'Norlal';
         }
         return join("\t", $tweet);

@@ -53,6 +53,7 @@ class MzpTestCase extends CakeTestCase {
     function testGetDataHttpSocketを呼び出している() {
         $this->Mzp->Http = new MockMzpHttpSocket();
         $this->Mzp->Http->expectOnce('get', array('http://tddbc.heroku.com/mzp/public_timeline'));
+  
         $results = $this->Mzp->getData();
         $this->assertTrue(is_array($results));
     }
